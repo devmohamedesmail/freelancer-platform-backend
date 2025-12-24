@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "singularName": "course",
+    "pluralName": "courses",
+    "displayName": "course"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "beginner ",
+        "intermediate ",
+        "advanced"
+      ]
+    },
+    "thumbnail": {
+      "type": "text"
+    },
+    "course_status": {
+      "type": "enumeration",
+      "enum": [
+        "draft  ",
+        "active)"
+      ]
+    },
+    "course_lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course-lesson.course-lesson"
+    }
+  }
+}

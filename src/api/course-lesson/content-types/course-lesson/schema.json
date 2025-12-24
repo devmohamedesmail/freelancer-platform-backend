@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_lessons",
+  "info": {
+    "singularName": "course-lesson",
+    "pluralName": "course-lessons",
+    "displayName": "course_lesson"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "content": {
+      "type": "enumeration",
+      "enum": [
+        "video ",
+        "text ",
+        "file"
+      ]
+    },
+    "content_url": {
+      "type": "text"
+    }
+  }
+}
