@@ -11,7 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "name_en": {
+      "type": "string"
+    },
+    "name_ar": {
       "type": "string"
     },
     "slug": {
@@ -21,7 +24,14 @@
       "type": "text"
     },
     "is_active": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category",
+      "mappedBy": "subcategory"
     }
   }
 }

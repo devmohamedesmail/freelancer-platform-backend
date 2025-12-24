@@ -445,18 +445,23 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     icon: Schema.Attribute.Text;
-    is_active: Schema.Attribute.Boolean;
+    is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name_ar: Schema.Attribute.String;
+    name_en: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
     subcategories: Schema.Attribute.Relation<
       'oneToMany',
+      'api::subcategory.subcategory'
+    >;
+    subcategory: Schema.Attribute.Relation<
+      'oneToOne',
       'api::subcategory.subcategory'
     >;
     updatedAt: Schema.Attribute.DateTime;
@@ -606,18 +611,20 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     icon: Schema.Attribute.Text;
-    is_active: Schema.Attribute.Boolean;
+    is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::subcategory.subcategory'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name_ar: Schema.Attribute.String;
+    name_en: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
