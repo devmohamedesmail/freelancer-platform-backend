@@ -4,7 +4,7 @@
   "info": {
     "singularName": "subcategory",
     "pluralName": "subcategories",
-    "displayName": "subcategory"
+    "displayName": "Subcategory"
   },
   "options": {
     "draftAndPublish": false

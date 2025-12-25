@@ -433,7 +433,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
-    displayName: 'category';
+    displayName: 'Category';
     pluralName: 'categories';
     singularName: 'category';
   };
@@ -470,11 +470,40 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
+  collectionName: 'countries';
+  info: {
+    displayName: 'Country';
+    pluralName: 'countries';
+    singularName: 'country';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::country.country'
+    > &
+      Schema.Attribute.Private;
+    name_ar: Schema.Attribute.String;
+    name_en: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCourseLessonCourseLesson
   extends Struct.CollectionTypeSchema {
   collectionName: 'course_lessons';
   info: {
-    displayName: 'course_lesson';
+    displayName: 'Course_lesson';
     pluralName: 'course-lessons';
     singularName: 'course-lesson';
   };
@@ -504,7 +533,7 @@ export interface ApiCourseLessonCourseLesson
 export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
-    displayName: 'course';
+    displayName: 'Course';
     pluralName: 'courses';
     singularName: 'course';
   };
@@ -543,7 +572,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
 export interface ApiGigGig extends Struct.CollectionTypeSchema {
   collectionName: 'gigs';
   info: {
-    displayName: 'gig';
+    displayName: 'Gig';
     pluralName: 'gigs';
     singularName: 'gig';
   };
@@ -572,7 +601,7 @@ export interface ApiGigGig extends Struct.CollectionTypeSchema {
 export interface ApiMessageMessage extends Struct.CollectionTypeSchema {
   collectionName: 'messages';
   info: {
-    displayName: 'message';
+    displayName: 'Message';
     pluralName: 'messages';
     singularName: 'message';
   };
@@ -603,7 +632,7 @@ export interface ApiMessageMessage extends Struct.CollectionTypeSchema {
 export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
   collectionName: 'subcategories';
   info: {
-    displayName: 'subcategory';
+    displayName: 'Subcategory';
     pluralName: 'subcategories';
     singularName: 'subcategory';
   };
@@ -636,7 +665,7 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
 export interface ApiToolTool extends Struct.CollectionTypeSchema {
   collectionName: 'tools';
   info: {
-    displayName: 'tool';
+    displayName: 'Tool';
     pluralName: 'tools';
     singularName: 'tool';
   };
@@ -662,6 +691,38 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUserRoleUserRole extends Struct.CollectionTypeSchema {
+  collectionName: 'user_roles';
+  info: {
+    displayName: 'User_Role';
+    pluralName: 'user-roles';
+    singularName: 'user-role';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-role.user-role'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_users: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1127,6 +1188,7 @@ export interface PluginUsersPermissionsUser
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    country: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1178,12 +1240,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
+      'api::country.country': ApiCountryCountry;
       'api::course-lesson.course-lesson': ApiCourseLessonCourseLesson;
       'api::course.course': ApiCourseCourse;
       'api::gig.gig': ApiGigGig;
       'api::message.message': ApiMessageMessage;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::tool.tool': ApiToolTool;
+      'api::user-role.user-role': ApiUserRoleUserRole;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

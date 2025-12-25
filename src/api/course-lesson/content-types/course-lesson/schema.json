@@ -4,7 +4,7 @@
   "info": {
     "singularName": "course-lesson",
     "pluralName": "course-lessons",
-    "displayName": "course_lesson"
+    "displayName": "Course_lesson"
   },
   "options": {
     "draftAndPublish": false

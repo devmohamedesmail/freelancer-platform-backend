@@ -74,6 +74,9 @@
     },
     "is_active": {
       "type": "boolean"
+    },
+    "country": {
+      "type": "string"
     }
   }
 }
