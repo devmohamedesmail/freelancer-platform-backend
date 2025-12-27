@@ -66,9 +66,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "avatar": {
-      "type": "text"
-    },
     "bio": {
       "type": "text"
     },
@@ -80,6 +77,19 @@
     },
     "links": {
       "type": "json"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "role_id": {
+      "type": "integer"
     }
   }
 }
