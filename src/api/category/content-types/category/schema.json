@@ -20,9 +20,6 @@
     "slug": {
       "type": "string"
     },
-    "icon": {
-      "type": "text"
-    },
     "is_active": {
       "type": "boolean",
       "default": true
@@ -37,6 +34,16 @@
       "relation": "oneToOne",
       "target": "api::subcategory.subcategory",
       "inversedBy": "category"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

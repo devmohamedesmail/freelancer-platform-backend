@@ -7,7 +7,7 @@
     "displayName": "User_Role"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

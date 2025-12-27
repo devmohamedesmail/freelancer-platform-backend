@@ -11,11 +11,20 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "user_id": {
+      "type": "integer"
+    },
     "title": {
+      "type": "string"
+    },
+    "slug": {
       "type": "string"
     },
     "description": {
       "type": "text"
+    },
+    "category_id": {
+      "type": "integer"
     },
     "price": {
       "type": "decimal"
@@ -23,8 +32,27 @@
     "delivery_time": {
       "type": "integer"
     },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "revisions": {
       "type": "integer"
+    },
+    "gig_status": {
+      "type": "enumeration",
+      "default": "draft",
+      "enum": [
+        "draft",
+        "active",
+        "paused"
+      ]
     }
   }
 }
